@@ -1,10 +1,10 @@
-﻿@model Design_Calculator_New.Models.UserModel
+﻿@model Design_Calculator_New.Models.GoldModel
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -13,7 +13,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style type="text/css">
         .bs-example {
-            height: 220px;
+            height: 300px;
         }
 
         .centerlook {
@@ -37,27 +37,40 @@
 </head>
 <body>
 
-    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+    @using (Html.BeginForm("Calculate", "Home", FormMethod.Post))
     {
         <div class="bs-example" style="border:2px solid gray;">
 
             <div class="form-group centerlook">
-                <h1> Login </h1>
+                <h1> Calculate Total Price  </h1>
             </div>
             <div class="form-group centerlook">
-                <label>User Name: </label>
-                @Html.EditorFor(model => model.UserName)
-                @Html.ValidationMessageFor(model => model.UserName)
+                <label>Gold Price: </label>
+                @Html.EditorFor(model => model.GoldPrice)
+                @Html.ValidationMessageFor(model => model.GoldPrice)
             </div>
             <div class="form-group centerlook">
-                <label>Password:</label>
-                @Html.PasswordFor(model => model.Password)
-                @Html.ValidationMessageFor(model => model.Password)
+                <label>Weight of the item:</label>
+                @Html.TextBoxFor(model => model.Weightitem)
+                @Html.ValidationMessageFor(model => model.Weightitem)
 
+            </div>
+
+            <div class="form-group centerlook">
+                <label>Discount:</label>
+                @Html.TextBoxFor(model => model.Discount)
+                @Html.ValidationMessageFor(model => model.Discount)
+
+            </div>
+            <div class="form-group centerlook">
+                <label>Gold Price: @TempData["GoldPrice"]</label>
+                <label>Weight of the item:@TempData["Weightitem"]</label>
+                <label>Discount: @TempData["Discount"]</label>
+                <label>Total price of the item: @TempData["totalPrice"]</label>
             </div>
             <div class="loginbtn">
 
-                <input type="submit" value="Login" class="btn btn-primary" />
+                <input type="submit" value="Caluclate" name="Calculate total Price" class="btn btn-primary" />
 
             </div>
         </div>
